@@ -14,20 +14,41 @@ const mealEntrySchema = new mongoose.Schema(
       required: true,
     },
 
-    servings: {
-      type: Number,
-      default: 1,
+    foodName: {
+      type: String,
+      required: true,
     },
 
     mealType: {
       type: String,
       enum: ["Breakfast", "Lunch", "Dinner", "Snack"],
-      default: "Breakfast",
+      required: true,
+    },
+
+    servings: {
+      type: Number,
+      default: 1,
+      min: 0.1,
+    },
+
+    nutrition: {
+      calories: Number,
+      protein: Number,
+      carbs: Number,
+      fat: Number,
+      fiber: Number,
+      sugar: Number,
+      sodium: Number,
     },
 
     date: {
       type: Date,
       default: Date.now,
+    },
+
+    notes: {
+      type: String,
+      default: "",
     },
   },
   {
