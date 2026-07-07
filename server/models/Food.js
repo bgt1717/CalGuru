@@ -15,6 +15,7 @@ const foodSchema = new mongoose.Schema(
 
     servingSize: {
       type: Number,
+      required: true,
       default: 100,
     },
 
