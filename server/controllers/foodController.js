@@ -33,11 +33,7 @@ exports.getFoods = async (req, res) => {
 // UPDATE FOOD
 exports.updateFood = async (req, res) => {
   try {
-    const food = await Food.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
+    const food = await Food.findById(req.params.id);
 
     if (!food) {
       return res.status(404).json({
@@ -45,16 +41,32 @@ exports.updateFood = async (req, res) => {
       });
     }
 
+    // Only the creator can edit custom foods
+    if (
+      food.createdBy &&
+      food.createdBy.toString() !== req.user.userId
+    ) {
+      return res.status(403).json({
+        message: "Not authorized",
+      });
+    }
+
+    Object.assign(food, req.body);
+
+    await food.save();
+
     res.json(food);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({
+      message: err.message,
+    });
   }
 };
 
 // DELETE FOOD
 exports.deleteFood = async (req, res) => {
   try {
-    const food = await Food.findByIdAndDelete(req.params.id);
+    const food = await Food.findById(req.params.id);
 
     if (!food) {
       return res.status(404).json({
@@ -62,10 +74,23 @@ exports.deleteFood = async (req, res) => {
       });
     }
 
+    if (
+      food.createdBy &&
+      food.createdBy.toString() !== req.user.userId
+    ) {
+      return res.status(403).json({
+        message: "Not authorized",
+      });
+    }
+
+    await food.deleteOne();
+
     res.json({
       message: "Food deleted",
     });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({
+      message: err.message,
+    });
   }
 };
