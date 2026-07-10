@@ -3,21 +3,24 @@ import "./Input.css";
 export default function Input({
   label,
   type = "text",
+  name,
   value,
   onChange,
   placeholder,
-  name,
+  ...props
 }) {
   return (
     <div className="input-group">
-      <label>{label}</label>
+      <label htmlFor={name}>{label}</label>
 
       <input
+        id={name}
         type={type}
+        name={name}
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        name={name}
+        {...props}
       />
     </div>
   );
