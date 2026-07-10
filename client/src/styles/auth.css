@@ -1,0 +1,47 @@
+.auth-page{
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:2rem;
+}
+
+.auth-card{
+
+    width:100%;
+
+    max-width:420px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1rem;
+}
+
+.auth-card h1{
+
+    text-align:center;
+
+    color:var(--primary);
+}
+
+.auth-card form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:.5rem;
+}
+
+.error{
+
+    color:var(--danger);
+
+    font-size:.95rem;
+}
