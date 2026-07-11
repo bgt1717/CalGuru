@@ -8,20 +8,9 @@ const foodSchema = new mongoose.Schema(
       trim: true,
     },
 
-    brand: {
-      type: String,
-      default: "",
-    },
-
     servingSize: {
-      type: Number,
-      required: true,
-      default: 100,
-    },
-
-    servingUnit: {
       type: String,
-      default: "g",
+      default: "100 g",
     },
 
     calories: {
@@ -44,29 +33,15 @@ const foodSchema = new mongoose.Schema(
       default: 0,
     },
 
-    fiber: {
-      type: Number,
-      default: 0,
-    },
-
-    sugar: {
-      type: Number,
-      default: 0,
-    },
-
-    sodium: {
-      type: Number,
-      default: 0,
+    isPublic: {
+      type: Boolean,
+      default: false,
     },
 
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-    },
-
-    isPublic: {
-      type: Boolean,
-      default: false,
+      default: null,
     },
   },
   {

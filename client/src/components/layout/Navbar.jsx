@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../context/AuthContext";
 
@@ -19,7 +19,19 @@ export default function Navbar() {
 
       <div className="container navbar-content">
 
-        <h2>CalGuru</h2>
+        <div className="navbar-left">
+
+            <h2>CalGuru</h2>
+
+            <NavLink to="/">
+              Dashboard
+            </NavLink>
+
+            <NavLink to="/foods">
+              Foods
+            </NavLink>
+
+          </div>
 
         <div className="navbar-right">
 

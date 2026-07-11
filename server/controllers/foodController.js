@@ -22,7 +22,7 @@ exports.getFoods = async (req, res) => {
         { isPublic: true },
         { createdBy: req.user.userId },
       ],
-    });
+    }).sort({ name: 1 });
 
     res.json(foods);
   } catch (err) {

@@ -51,3 +51,18 @@
 
     opacity:.9;
 }
+
+.navbar-left{
+    display:flex;
+    align-items:center;
+    gap:2rem;
+}
+
+.navbar-left a{
+    color:var(--text);
+    font-weight:500;
+}
+
+.navbar-left a.active{
+    color:var(--primary);
+}
