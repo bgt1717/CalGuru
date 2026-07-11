@@ -157,8 +157,10 @@ exports.getDailySummary = async (req, res) => {
       },
     });
   } catch (err) {
-    res.status(500).json({
-      message: err.message,
-    });
-  }
+  console.error(err);
+
+  res.status(500).json({
+    message: err.message,
+  });
+}
 };

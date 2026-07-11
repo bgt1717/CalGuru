@@ -6,3 +6,29 @@
 
     gap:1.5rem;
 }
+
+.meals{
+    display:grid;
+    gap:1.5rem;
+    margin-top:2rem;
+}
+
+.meal-card{
+    padding:1.5rem;
+}
+
+.meal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:1rem;
+}
+
+@media (max-width:600px){
+
+    .meal-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:1rem;
+    }
+}

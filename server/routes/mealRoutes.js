@@ -10,12 +10,13 @@ const {
   deleteMeal,
 } = require("../controllers/mealController");
 
-router.get("/", getMeals);
+// Protect all meal routes
+router.get("/", auth, getMeals);
 
-router.get("/summary", getDailySummary);
+router.get("/summary", auth, getDailySummary);
 
-router.post("/", addMeal);
+router.post("/", auth, addMeal);
 
-router.delete("/:id", deleteMeal);
+router.delete("/:id", auth, deleteMeal);
 
 module.exports = router;
