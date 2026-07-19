@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Foods from "./pages/Foods";
 import AddFood from "./pages/AddFood";
+import AddMeal from "./pages/AddMeal";
 
 import ProtectedRoute from "./components/layout/ProtectedRoute";
 
@@ -47,6 +48,15 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/meals/new"
+          element={
+          <ProtectedRoute>
+            <AddMeal />
+          </ProtectedRoute>
+        }
+      />
 
       </Routes>
     </BrowserRouter>

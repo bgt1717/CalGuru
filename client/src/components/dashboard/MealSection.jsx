@@ -2,15 +2,15 @@ import Card from "../ui/Card";
 import Button from "../ui/Button";
 import { Link } from "react-router-dom";
 
-export default function MealSection({ title }) {
+export default function MealSection({ mealType }) {
   return (
     <Card className="meal-card">
 
       <div className="meal-header">
 
-        <h2>{title}</h2>
+        <h2>{mealType}</h2>
 
-      <Link to="/foods/new">
+      <Link to={`/meals/new?meal=${mealType}`}>
           <Button variant="secondary">
               + Add Food
           </Button>
