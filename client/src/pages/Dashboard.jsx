@@ -9,28 +9,33 @@ import "./Dashboard.css";
 
 export default function Dashboard() {
   const [summary, setSummary] = useState(null);
+  const [meals, setMeals] = useState([]);
 
   useEffect(() => {
-    async function loadSummary() {
-      try {
-        const res = await API.get("/meals/summary");
-        setSummary(res.data);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
-    loadSummary();
+    loadDashboard();
   }, []);
 
+  async function loadDashboard() {
+    try {
+      const [summaryRes, mealsRes] = await Promise.all([
+        API.get("/meals/summary"),
+        API.get("/meals"),
+      ]);
+
+      setSummary(summaryRes.data);
+      setMeals(mealsRes.data);
+
+    } catch (err) {
+      console.error(err);
+    }
+  }
   if (!summary) {
     return (
       <Layout>
         <h2>Loading...</h2>
       </Layout>
     );
-  }
-
+}
   return (
     <Layout>
       <h1 className="section-title">
@@ -71,10 +76,33 @@ export default function Dashboard() {
 
       <div className="meals">
 
-        <MealSection title="Breakfast" />
-        <MealSection title="Lunch" />
-        <MealSection title="Dinner" />
-        <MealSection title="Snacks" />
+      <MealSection
+          mealType="Breakfast"
+          meals={meals.filter(
+              meal => meal.mealType === "Breakfast"
+          )}
+      />
+
+      <MealSection
+          mealType="Lunch"
+          meals={meals.filter(
+              meal => meal.mealType === "Lunch"
+          )}
+      />
+
+      <MealSection
+          mealType="Dinner"
+          meals={meals.filter(
+              meal => meal.mealType === "Dinner"
+          )}
+      />
+
+      <MealSection
+          mealType="Snacks"
+          meals={meals.filter(
+              meal => meal.mealType === "Snacks"
+          )}
+      />
 
       </div>
     </Layout>

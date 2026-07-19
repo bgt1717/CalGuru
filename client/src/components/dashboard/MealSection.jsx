@@ -2,7 +2,10 @@ import Card from "../ui/Card";
 import Button from "../ui/Button";
 import { Link } from "react-router-dom";
 
-export default function MealSection({ mealType }) {
+export default function MealSection({
+    mealType,
+    meals,
+}) {
   return (
     <Card className="meal-card">
 
@@ -17,10 +20,44 @@ export default function MealSection({ mealType }) {
       </Link>
 
       </div>
+  {meals.length === 0 ? (
 
       <p className="text-muted">
-        No foods added.
+          No foods added.
       </p>
+
+  ) : (
+
+      meals.map(meal => (
+
+          <div
+              key={meal._id}
+              className="meal-item"
+          >
+
+              <strong>
+                  {meal.foodName}
+              </strong>
+
+              <p>
+
+                  {meal.servings} serving
+
+                  {meal.servings > 1 && "s"}
+
+              </p>
+
+              <p>
+
+                  {meal.nutrition.calories} kcal
+
+              </p>
+
+          </div>
+
+      ))
+
+  )}
 
     </Card>
   );
