@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Foods from "./pages/Foods";
+import AddFood from "./pages/AddFood";
 
 import ProtectedRoute from "./components/layout/ProtectedRoute";
 
@@ -36,6 +37,15 @@ function App() {
         <Route
           path="/register"
           element={<Register />}
+        />
+
+        <Route
+          path="/foods/new"
+          element={
+            <ProtectedRoute>
+              <AddFood />
+            </ProtectedRoute>
+          }
         />
 
       </Routes>

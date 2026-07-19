@@ -1,5 +1,6 @@
 import Card from "../ui/Card";
 import Button from "../ui/Button";
+import { Link } from "react-router-dom";
 
 export default function MealSection({ title }) {
   return (
@@ -9,9 +10,11 @@ export default function MealSection({ title }) {
 
         <h2>{title}</h2>
 
-        <Button variant="secondary">
-          + Add Food
-        </Button>
+      <Link to="/foods/new">
+          <Button variant="secondary">
+              + Add Food
+          </Button>
+      </Link>
 
       </div>
 
