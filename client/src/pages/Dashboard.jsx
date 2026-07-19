@@ -5,6 +5,7 @@ import API from "../api/axios";
 import Layout from "../components/layout/Layout";
 import MacroCard from "../components/dashboard/MacroCard";
 import MealSection from "../components/dashboard/MealSection";
+
 import "./Dashboard.css";
 
 export default function Dashboard() {
@@ -24,18 +25,29 @@ export default function Dashboard() {
 
       setSummary(summaryRes.data);
       setMeals(mealsRes.data);
-
     } catch (err) {
       console.error(err);
     }
   }
+
+  async function deleteMeal(id) {
+    try {
+      await API.delete(`/meals/${id}`);
+
+      loadDashboard();
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   if (!summary) {
     return (
       <Layout>
         <h2>Loading...</h2>
       </Layout>
     );
-}
+  }
+
   return (
     <Layout>
       <h1 className="section-title">
@@ -43,7 +55,6 @@ export default function Dashboard() {
       </h1>
 
       <div className="macro-grid">
-
         <MacroCard
           label="Calories"
           current={summary.totals.calories}
@@ -71,39 +82,40 @@ export default function Dashboard() {
           goal={summary.goals.fat}
           unit="g"
         />
-      
       </div>
 
       <div className="meals">
-
-      <MealSection
+        <MealSection
           mealType="Breakfast"
           meals={meals.filter(
-              meal => meal.mealType === "Breakfast"
+            (meal) => meal.mealType === "Breakfast"
           )}
-      />
+          onDelete={deleteMeal}
+        />
 
-      <MealSection
+        <MealSection
           mealType="Lunch"
           meals={meals.filter(
-              meal => meal.mealType === "Lunch"
+            (meal) => meal.mealType === "Lunch"
           )}
-      />
+          onDelete={deleteMeal}
+        />
 
-      <MealSection
+        <MealSection
           mealType="Dinner"
           meals={meals.filter(
-              meal => meal.mealType === "Dinner"
+            (meal) => meal.mealType === "Dinner"
           )}
-      />
+          onDelete={deleteMeal}
+        />
 
-      <MealSection
+        <MealSection
           mealType="Snacks"
           meals={meals.filter(
-              meal => meal.mealType === "Snacks"
+            (meal) => meal.mealType === "Snacks"
           )}
-      />
-
+          onDelete={deleteMeal}
+        />
       </div>
     </Layout>
   );

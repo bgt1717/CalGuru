@@ -1,64 +1,50 @@
-import Card from "../ui/Card";
-import Button from "../ui/Button";
 import { Link } from "react-router-dom";
+import Button from "../ui/Button";
+import Card from "../ui/Card";
 
 export default function MealSection({
-    mealType,
-    meals,
+  mealType,
+  meals,
+  onDelete,
 }) {
   return (
-    <Card className="meal-card">
-
+    <Card>
       <div className="meal-header">
-
         <h2>{mealType}</h2>
 
-      <Link to={`/meals/new?meal=${mealType}`}>
-          <Button variant="secondary">
-              + Add Food
-          </Button>
-      </Link>
-
+        <Link to={`/meals/new?meal=${mealType}`}>
+          <Button>+ Add Food</Button>
+        </Link>
       </div>
-  {meals.length === 0 ? (
 
-      <p className="text-muted">
-          No foods added.
-      </p>
-
-  ) : (
-
-      meals.map(meal => (
-
+      {meals.length === 0 ? (
+        <p className="text-muted">No foods added.</p>
+      ) : (
+        meals.map((meal) => (
           <div
-              key={meal._id}
-              className="meal-item"
+            key={meal._id}
+            className="meal-item"
           >
-
-              <strong>
-                  {meal.foodName}
-              </strong>
+            <div>
+              <strong>{meal.foodName}</strong>
 
               <p>
-
-                  {meal.servings} serving
-
-                  {meal.servings > 1 && "s"}
-
+                {meal.servings} serving
+                {meal.servings > 1 ? "s" : ""}
               </p>
 
-              <p>
+              <p>{meal.nutrition.calories} kcal</p>
+            </div>
 
-                  {meal.nutrition.calories} kcal
-
-              </p>
-
+            <button
+              className="delete-btn"
+              onClick={() => onDelete(meal._id)}
+            >
+              ✕
+            </button>
           </div>
-
-      ))
-
-  )}
-
+        ))
+      )}
     </Card>
   );
 }
