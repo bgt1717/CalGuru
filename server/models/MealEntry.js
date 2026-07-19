@@ -7,7 +7,7 @@ const mealEntrySchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-
+    
     food: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Food",

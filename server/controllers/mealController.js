@@ -5,7 +5,12 @@ const User = require("../models/User");
 // ADD MEAL
 exports.addMeal = async (req, res) => {
   try {
-    const { foodId, servings, mealType, notes } = req.body;
+    const {
+      foodId,
+      servings = 1,
+      mealType,
+      notes,
+    } = req.body;
 
     const food = await Food.findById(foodId);
 
@@ -33,9 +38,9 @@ exports.addMeal = async (req, res) => {
         protein: food.protein * servings,
         carbs: food.carbs * servings,
         fat: food.fat * servings,
-        fiber: food.fiber * servings,
-        sugar: food.sugar * servings,
-        sodium: food.sodium * servings,
+        fiber: (food.fiber || 0) * servings,
+        sugar: (food.sugar || 0) * servings,
+        sodium: (food.sodium || 0) * servings,
       },
     });
 
@@ -66,7 +71,9 @@ exports.getMeals = async (req, res) => {
         $gte: start,
         $lte: end,
       },
-    }).sort({
+    })
+    .populate("food")
+    .sort({
       createdAt: 1,
     });
 
