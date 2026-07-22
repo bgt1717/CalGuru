@@ -16,6 +16,19 @@ export default function Foods() {
     loadFoods();
   }, []);
 
+  const deleteFood = async (id) => {
+  if (!window.confirm("Delete this food?")) return;
+
+  try {
+    await API.delete(`/foods/${id}`);
+
+    setFoods((prev) => prev.filter((food) => food._id !== id));
+  } catch (err) {
+    console.error(err);
+    alert("Failed to delete food.");
+  }
+};
+
   async function loadFoods() {
     try {
       const res = await API.get("/foods");
@@ -53,7 +66,14 @@ export default function Foods() {
             <p>C {food.carbs}g</p>
 
             <p>F {food.fat}g</p>
-
+            {!food.isPublic && (
+            <button
+                className="delete-food-btn"
+                onClick={() => deleteFood(food._id)}
+            >
+                Delete
+            </button>
+            )}
           </Card>
         ))}
 

@@ -74,10 +74,15 @@ exports.deleteFood = async (req, res) => {
       });
     }
 
-    if (
-      food.createdBy &&
-      food.createdBy.toString() !== req.user.userId
-    ) {
+    // prevent deleting public foods
+    if (food.isPublic) {
+      return res.status(403).json({
+        message: "Public foods cannot be deleted",
+      });
+    }
+
+    // only creator may delete
+    if (food.createdBy.toString() !== req.user.userId) {
       return res.status(403).json({
         message: "Not authorized",
       });
@@ -89,8 +94,9 @@ exports.deleteFood = async (req, res) => {
       message: "Food deleted",
     });
   } catch (err) {
+    console.error(err);
     res.status(500).json({
-      message: err.message,
+      message: "Server Error",
     });
   }
 };
