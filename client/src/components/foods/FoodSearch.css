@@ -1,0 +1,33 @@
+.food-search{
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+}
+
+.food-search input{
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #ddd;
+}
+
+.food-results{
+    max-height:300px;
+    overflow-y:auto;
+    border:1px solid #eee;
+    border-radius:8px;
+}
+
+.food-option{
+    padding:12px;
+    display:flex;
+    justify-content:space-between;
+    cursor:pointer;
+}
+
+.food-option:hover{
+    background:#f7f7f7;
+}
+
+.food-option.selected{
+    background:#e8f4ff;
+}

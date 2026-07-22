@@ -8,7 +8,7 @@ import Layout from "../components/layout/Layout";
 import Card from "../components/ui/Card";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
-
+import FoodSearch from "../components/foods/foodSearch";
 
 
 export default function AddMeal() {
@@ -88,21 +88,15 @@ export default function AddMeal() {
           </select>
 
           <label>Food</label>
-
-          <select
-            name="foodId"
+          <FoodSearch
             value={form.foodId}
-            onChange={handleChange}
-          >
-            {foods.map((food) => (
-              <option
-                key={food._id}
-                value={food._id}
-              >
-                {food.name}
-              </option>
-            ))}
-          </select>
+            onChange={(foodId) =>
+              setForm((prev) => ({
+                ...prev,
+                foodId,
+              }))
+            }
+          />
 
           <Input
             label="Servings"
