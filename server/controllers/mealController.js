@@ -9,7 +9,6 @@ exports.addMeal = async (req, res) => {
       foodId,
       servings = 1,
       mealType,
-      notes,
     } = req.body;
 
     const food = await Food.findById(foodId);
@@ -31,7 +30,6 @@ exports.addMeal = async (req, res) => {
 
       servings,
 
-      notes,
 
       nutrition: {
         calories: food.calories * servings,

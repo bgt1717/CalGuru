@@ -22,7 +22,6 @@ export default function AddMeal() {
     foodId: "",
     mealType: defaultMeal,
     servings: 1,
-    notes: "",
   });
 
   useEffect(() => {
@@ -181,13 +180,6 @@ export default function AddMeal() {
             onChange={handleChange}
             min="0.25"
             step="0.25"
-          />
-
-          <Input
-            label="Notes"
-            name="notes"
-            value={form.notes}
-            onChange={handleChange}
           />
 
           <Button type="submit">Add Meal</Button>

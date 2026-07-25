@@ -46,10 +46,6 @@ const mealEntrySchema = new mongoose.Schema(
       default: Date.now,
     },
 
-    notes: {
-      type: String,
-      default: "",
-    },
   },
   {
     timestamps: true,
