@@ -51,7 +51,7 @@ function App() {
 
         <Route
           path="/meals/new"
-          element={
+        element={
           <ProtectedRoute>
             <AddMeal />
           </ProtectedRoute>

@@ -8,7 +8,7 @@ import Card from "../components/ui/Card";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
 
-import "../styles/Auth.css";
+import "../styles/auth.css";
 
 export default function Register() {
   const navigate = useNavigate();
