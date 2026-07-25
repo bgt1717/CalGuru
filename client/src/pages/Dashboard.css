@@ -99,3 +99,41 @@
   color: #991b1b;
   transform: scale(1.1);
 }
+
+.meal-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.meal-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 14px;
+
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.meal-btn:hover {
+  border-color: #4caf50;
+  transform: translateY(-2px);
+}
+
+.meal-btn.active {
+  background: #4caf50;
+  color: white;
+  border-color: #4caf50;
+  box-shadow: 0 6px 16px rgba(76, 175, 80, 0.25);
+}

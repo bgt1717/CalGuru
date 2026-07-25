@@ -111,18 +111,33 @@ export default function AddMeal() {
         <h1>Add Meal</h1>
 
         <form onSubmit={handleSubmit}>
-          <label>Meal</label>
+        <label>Choose Meal</label>
 
-          <select
-            name="mealType"
-            value={form.mealType}
-            onChange={handleChange}
-          >
-            <option>Breakfast</option>
-            <option>Lunch</option>
-            <option>Dinner</option>
-            <option>Snacks</option>
-          </select>
+        <div className="meal-buttons">
+          {[
+            { name: "Breakfast", icon: "🍳" },
+            { name: "Lunch", icon: "🥪" },
+            { name: "Dinner", icon: "🍽️" },
+            { name: "Snacks", icon: "🍎" },
+          ].map((meal) => (
+            <button
+              type="button"
+              key={meal.name}
+              className={`meal-btn ${
+                form.mealType === meal.name ? "active" : ""
+              }`}
+              onClick={() =>
+                setForm((prev) => ({
+                  ...prev,
+                  mealType: meal.name,
+                }))
+              }
+            >
+              <span>{meal.icon}</span>
+              {meal.name}
+            </button>
+          ))}
+        </div>
 
           <label>Search Food</label>
 
