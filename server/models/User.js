@@ -48,10 +48,29 @@ const userSchema = new mongoose.Schema(
     },
 
     profile: {
-      age: Number,
-      gender: String,
-      height: Number,
-      weight: Number,
+      age: {
+        type: Number,
+        default: null,
+      },
+
+      gender: {
+        type: String,
+        enum: ["male", "female"],
+        default: "male",
+      },
+
+      // Stored in centimeters
+      heightCm: {
+        type: Number,
+        default: null,
+      },
+
+      // Stored in kilograms
+      weightKg: {
+        type: Number,
+        default: null,
+      },
+
       activityLevel: {
         type: String,
         enum: [
@@ -62,6 +81,12 @@ const userSchema = new mongoose.Schema(
           "very-active",
         ],
         default: "moderate",
+      },
+
+      goal: {
+        type: String,
+        enum: ["lose", "maintain", "gain"],
+        default: "maintain",
       },
     },
   },
