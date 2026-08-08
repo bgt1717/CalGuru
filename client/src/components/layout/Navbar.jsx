@@ -25,7 +25,9 @@ export default function Navbar() {
       <div className="container navbar-content">
         <div className="navbar-left">
           <div className="navbar-brand">
-            <h2>CalGuru</h2>
+            <NavLink to="/" className="navbar-brand-link">
+              <h2>CalGuru</h2>
+            </NavLink>
             <button
               className="navbar-toggle"
               onClick={toggleMenu}
