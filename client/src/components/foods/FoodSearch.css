@@ -220,7 +220,7 @@
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 650px) {
   .food-search {
     flex-direction: column;
     align-items: stretch;

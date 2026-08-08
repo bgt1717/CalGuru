@@ -6,7 +6,7 @@
   border: 1px solid var(--border);
 }
 
-@media (max-width: 450px) {
+@media (max-width: 650px) {
   .card {
     padding: 1.25rem;
   }

@@ -40,7 +40,7 @@ export default function Navbar() {
             <NavLink to="/">Dashboard</NavLink>
             <NavLink to="/foods">Foods</NavLink>
             <div className="navbar-mobile-actions">
-              <span>{user?.username}</span>
+              <span className="navbar-user">{user?.username}</span>
               <button className="logout-btn mobile-logout" onClick={handleLogout}>
                 Logout
               </button>
