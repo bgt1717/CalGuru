@@ -9,6 +9,7 @@ import { useAuth } from "../context/AuthContext";
 import Card from "../components/ui/Card";
 import Input from "../components/ui/Input";
 import Button from "../components/ui/Button";
+import Slideshow from "../components/ui/Slideshow";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -48,16 +49,18 @@ export default function Login() {
   }
 
   return (
-    <div className="auth-page">
-      <Card className="auth-card">
+    <div className="auth-page login-page">
+      <div className="login-layout">
+        <Slideshow />
+        <Card className="auth-card">
 
-        <h1>CalGuru</h1>
+          <h1>CalGuru</h1>
 
-        <p className="text-muted">
-          Track your nutrition effortlessly.
-        </p>
+          <p className="text-muted">
+            Track your nutrition effortlessly.
+          </p>
 
-        <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
 
           <Input
             label="Email"
@@ -98,6 +101,7 @@ export default function Login() {
         </p>
 
       </Card>
+      </div>
     </div>
   );
 }

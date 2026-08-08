@@ -23,6 +23,19 @@
     gap:1rem;
 }
 
+.login-layout {
+    display: grid;
+    grid-template-columns: minmax(320px, 420px) minmax(320px, 520px);
+    gap: 2rem;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .login-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
 .auth-card h1{
 
     text-align:center;
