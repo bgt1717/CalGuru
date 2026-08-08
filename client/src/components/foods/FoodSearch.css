@@ -219,3 +219,34 @@
     gap: 10px;
   }
 }
+
+@media (max-width: 450px) {
+  .food-search {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px;
+  }
+
+  .food-search input {
+    font-size: 14px;
+  }
+
+  .food-search-container {
+    width: 100%;
+    padding: 0 8px;
+  }
+
+  .food-card {
+    padding: 16px;
+  }
+
+  .food-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .food-actions {
+    gap: 8px;
+  }
+}

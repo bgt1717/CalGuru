@@ -5,3 +5,9 @@
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border);
 }
+
+@media (max-width: 450px) {
+  .card {
+    padding: 1.25rem;
+  }
+}
